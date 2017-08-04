@@ -54,8 +54,7 @@ var articleOne={
     </div>
  </body>
   </html>
-`
-};
+`;
 return htmlTemplate;
 }
 
