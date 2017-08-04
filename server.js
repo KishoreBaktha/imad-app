@@ -27,10 +27,9 @@ var articleOne={
         var heading=data.heading;
         var content=data.content;
     var htmlTemplate=
-    {
-       temp: `
+        `
        <html>
-<head>
+       <head>
     <title>
        ${title}
     </title>
