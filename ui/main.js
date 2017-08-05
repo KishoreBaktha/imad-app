@@ -45,16 +45,32 @@ var submitbtn=document.getElementById("submit");
 submitbtn.onclick=function()
 {
   //make request to server and send the name
-  
+   var request=new XMLHttpRequest();
+    //capture response and store in variable
+    request.onreadystatechange=function()
+    {
+        if(request.readyState==XMLHttpRequest.DONE)
+        {
+            //take some action
+            if(request.status==200)
+            {
+               var names=request.responeText;
+               names=JSON.parse(names);//converting string to object(array)
+               var list='';
+             for(var i =0;i<names.length;i++)
+             {
+                 list+='<li>'+names[i]+'</li>';
+             }
+              var ul=document.getElementById("ul");
+                 ul.innerHTML=list;
+            }
+        }
+    };
+    //make request
+    request.open('GET','http://kishorebaktha.imad.hasura-app.io/submit-name?name='+name,true);
+    request.send(null);
   //capture list of names render it as a list
-  var names=['name1','name2','name3'];
-  var list='';
-  for(var i =0;i<names.length;i++)
-  {
-      list+='<li>'+names[i]+'</li>';
-  }
-  var ul=document.getElementById("ul");
-  ul.innerHTML=list;
+  
 };
 
 
