@@ -38,12 +38,12 @@ button.onclick= function()
     request.send(null);
 };
 
-//submit name
-var nameInput=document.getElementById("name");
-var name=nameInput.value;
 var submitbtn=document.getElementById("submit");
 submitbtn.onclick=function()
 {
+    //submit name
+    var nameInput=document.getElementById("name");
+    var name=nameInput.value;
   //make request to server and send the name
    var request=new XMLHttpRequest();
     //capture response and store in variable
@@ -70,7 +70,7 @@ submitbtn.onclick=function()
     request.open('GET','http://kishorebaktha.imad.hasura-app.io/submit-name?name='+name,true);
     request.send(null);
   //capture list of names render it as a list
-  
+    
 };
 
 
