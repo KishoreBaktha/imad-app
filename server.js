@@ -93,9 +93,20 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 var names=[];
+/*
+//one way to get name
 app.get('/submit-name/:name', function (req, res) {
   //get name from the request
   var name=req.params.name;
+  names.push(name);
+  res.send(JSON.stringify(names));
+});
+*/
+//second way to get name
+app.get('/submit-name', function (req, res)//submit-name?name=xxxx
+{
+  //get name from the request
+  var name=req.query.name;
   names.push(name);
   res.send(JSON.stringify(names));
 });
