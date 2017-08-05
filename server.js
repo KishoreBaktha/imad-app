@@ -92,7 +92,6 @@ return htmlTemplate;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var names=[];
 /*
 //one way to get name
 app.get('/submit-name/:name', function (req, res) {
@@ -103,6 +102,7 @@ app.get('/submit-name/:name', function (req, res) {
 });
 */
 //second way to get name
+var names=[];
 app.get('/submit-name', function (req, res)//submit-name?name=xxxx
 {
   //get name from the request
