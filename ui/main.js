@@ -51,9 +51,8 @@ submitbtn.onclick=function()
             //take some action
             if(request.status==200)
             {
-               //var names=request.responeText;
-               var names=['name1','name2'];
-               //names=JSON.parse(names);//converting string to object(array)
+               var names=request.responeText;
+               names=JSON.parse(names);//converting string to object(array)
                var list='';
              for(var i =0;i<names.length;i++)
              {
@@ -67,7 +66,7 @@ submitbtn.onclick=function()
     //make request
      var nameInput=document.getElementById("name");
     var name=nameInput.value;
-    request.open('GET','http://kishorebaktha.imad.hasura-app.io/submit-name?name='+ name,true);
+    request.open('GET','http://kishorebaktha.imad.hasura-app.io/submit-name?name=' + name, true);
     request.send(null);
     //submit name
   //capture list of names render it as a list
