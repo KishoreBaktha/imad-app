@@ -64,11 +64,11 @@ submitbtn.onclick=function()
         }
     };
     //make request
+     var nameInput=document.getElementById("name");
+    var name=nameInput.value;
     request.open('GET','http://kishorebaktha.imad.hasura-app.io/submit-name?name='+ name,true);
     request.send(null);
     //submit name
-    var nameInput=document.getElementById("name");
-    var name=nameInput.value;
   //capture list of names render it as a list
     
 };
