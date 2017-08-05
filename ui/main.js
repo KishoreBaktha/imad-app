@@ -22,7 +22,7 @@ button.onclick= function()
     //capture response and store in variable
     request.onreadystatechange=function()
     {
-        if(request.readystate==XMLHttpRequest.DONE)
+        if(request.readyState==XMLHttpRequest.DONE)
         {
             //take some action
             if(request.status==200)
