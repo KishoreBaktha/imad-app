@@ -51,7 +51,7 @@ submitbtn.onclick=function()
             //take some action
             if(request.status==200)
             {
-               var names=request.responeText;
+               var names=request.responseText;
                console.log(names);
                names=JSON.parse(names);//converting string to object(array)
                var list='';
