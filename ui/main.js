@@ -52,6 +52,7 @@ submitbtn.onclick=function()
             if(request.status==200)
             {
                var names=request.responeText;
+               console.log(names);
                names=JSON.parse(names);//converting string to object(array)
                var list='';
              for(var i =0;i<names.length;i++)
