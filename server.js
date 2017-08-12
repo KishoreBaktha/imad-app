@@ -142,12 +142,12 @@ app.get('/counter',function(req,res) {
    counter=counter+1;
    res.send(counter.toString());
 });
-// app.get('/:articleName', function(req,res){
-//     var articleName=req.params.articleName;
-//     res.send(template(articles[articleName]));
-//     //res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));  
-// //res.send('Article one will be served here');
-// });
+app.get('/:articleName', function(req,res){
+    var articleName=req.params.articleName;
+    res.send(template(articles[articleName]));
+    //res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));  
+//res.send('Article one will be served here');
+});
 app.get('/articles/:articleName', function(req,res){
     pool.query("SELECT * FROM article WHERE title= '"+ req.params.articleName +"'",function(err,result)
     {
