@@ -106,7 +106,7 @@ var pool=new Pool(config);
 app.get('/test-db',function(req,res)
 {
  //make a select request
- pool.query("SELECT * FROM article",function(err,result)
+ pool.query("SELECT * FROM article where title='article-one'",function(err,result)
  {
     if(err)
     {
