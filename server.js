@@ -110,14 +110,14 @@ function hash(input,salt)
 {
     //how to create hash
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return hashed;
+    return hashed.toString('hex');
     
 }
 
 app.get('/hash/:input', function(req,res)
 {
-   var hashstring=hash(req.params.input,'this is some random value');
-   res.send(hashstring).toString('hex');
+   var hashstring=hash(req.params.input,'this-is-some-random-string');
+   res.send(hashstring);
 });
 
 //database2
