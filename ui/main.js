@@ -73,6 +73,45 @@ submitbtn.onclick=function()
   //capture list of names render it as a list
     
 };
+
+//submit name,password to login
+var submitbtn=document.getElementById("submit_button");
+submitbtn.onclick=function()
+{
+  //make request to server and send the name
+   var request=new XMLHttpRequest();
+    //capture response and store in variable
+    request.onreadystatechange=function()
+    {
+        if(request.readyState==XMLHttpRequest.DONE)
+        {
+            //take some action
+            if(request.status==200)
+            {
+              console.log('user logged in');
+              alert('logged in successfully');
+            }
+            else if(request.status===403)
+            {
+                alert('wrong username or password');
+            }
+             else if(request.status===500)
+            {
+                alert('something went wrong in server');
+            }
+        }
+    };
+    //make request
+     var username=document.getElementById("username").value;
+     var password=document.getElementById("password").value;
+    request.open('POST','http://kishorebaktha.imad.hasura-app.io/login', true);
+    request.setRequestHeader('Content-type','application/json');
+    request.send(JSON.stringify({username:username,password:password}));
+    //submit name
+  //capture list of names render it as a list
+    
+};
+
 var x = document.getElementById("demo");
 function getLocation() {
     if (navigator.geolocation) {
