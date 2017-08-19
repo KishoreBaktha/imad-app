@@ -75,7 +75,7 @@ submitbtn.onclick=function()
 };
 
 //submit name,password to login
-var submitbtn2=document.getElementById("submit_button");
+var submitbtn2=document.getElementById("submit2");
 submitbtn2.onclick=function()
 {
   //make request to server and send the name
