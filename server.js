@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var crypto=require('crypto');
 var bodyParser=require('body-parser');
+var session=require('express-session');
 //DATABASE
 var Pool=require('pg').Pool;
 var config={
@@ -17,6 +18,10 @@ var app = express();
 app.use(morgan('combined'));
 //load josn object to req.body variable
 app.use(bodyParser.json());
+app.use(session({
+    secret:'some random value',
+    cookie:{maxAge:1000*60*60*24*30}
+}));
 var articles={
           'article-one':{
     title:'Article one-Kishore Baktha',
@@ -161,9 +166,13 @@ app.post('/login',function(req,res)
             var hashedpassword=hash(password,salt);
             if(hashedpassword===dbString)
             {
-                 res.send('User successfully logged in');
-                 //set a session
-                 
+               
+                   //set a session
+                   req.session.auth={userId:result.rows[0].id};
+                   //setting cooke with session id
+                   //internally maps session id to object
+                   //{auth:{userId}}
+                 res.send('User successfully logged in');  
             }
             
         else
@@ -175,6 +184,20 @@ app.post('/login',function(req,res)
     }
   });
     
+});
+app.get('check-login',function(req,res){
+   if(req.session&&req.session.auth&&req.session.auth.userId)
+   {
+       res.send('you are logged in and uerId is :'+req.session.auth.userId.toString());
+   }
+   else
+   {
+       res.send('you are not logged in');
+   }
+});
+app.get('logout',function(req,res){
+   delete req.session.auth;
+   res.send('logged out');
 });
 //database2
 var pool=new Pool(config);
