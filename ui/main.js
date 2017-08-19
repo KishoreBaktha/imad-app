@@ -75,8 +75,8 @@ submitbtn.onclick=function()
 };
 
 //submit name,password to login
-var submitbtn=document.getElementById("submit_button");
-submitbtn.onclick=function()
+var submitbtn2=document.getElementById("submit_button");
+submitbtn2.onclick=function()
 {
   //make request to server and send the name
    var request=new XMLHttpRequest();
@@ -111,19 +111,5 @@ submitbtn.onclick=function()
   //capture list of names render it as a list
     
 };
-
-var x = document.getElementById("demo");
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-}
-
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-}
 
 
